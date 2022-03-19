@@ -5,6 +5,7 @@ import { NextPage, PokemonFull } from "../../@interfaces";
 import { pokeApi } from "../../api";
 import localFavorites from "../../utils/localFavorites";
 import { useState } from "react";
+import confetti from "canvas-confetti";
 
 interface Props {
   pokemon: PokemonFull;
@@ -17,6 +18,19 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
   const handleFavorite = () => {
     localFavorites.toggleFavorite(pokemon.id);
     setIsInFavorite(!isInFavorite);
+
+    if (isInFavorite) return;
+
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 160,
+      angle: -100,
+      origin: {
+        x: 1,
+        y: 0,
+      },
+    });
   };
 
   return (
