@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { Card, Grid, Row, Text } from "@nextui-org/react";
 
-import { Pokemon } from "../../interfaces";
+import { Pokemon } from "../../@interfaces";
 import { useRouter } from "next/router";
 
 interface Props {
@@ -21,7 +21,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
         </Card.Body>
         <Card.Footer>
           <Row justify="space-between">
-            <Text>{`#${pokemon.id} `}</Text>
+            <Text>{`#${pokemon.id}`}</Text>
             <Text transform="capitalize">{pokemon.name}</Text>
           </Row>
         </Card.Footer>
