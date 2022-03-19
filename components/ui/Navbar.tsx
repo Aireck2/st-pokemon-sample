@@ -1,7 +1,13 @@
 import Image from "next/image";
-import { NextUIThemeContext, Spacer, Text, useTheme } from "@nextui-org/react";
+import {
+  Link,
+  NextUIThemeContext,
+  Spacer,
+  Text,
+  useTheme,
+} from "@nextui-org/react";
 import React, { CSSProperties } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 
 const styles = (theme: NextUIThemeContext["theme"]): CSSProperties => {
   return {
@@ -18,24 +24,28 @@ export const Navbar = () => {
 
   return (
     <div style={styles(theme)}>
-      <Link href={"/"}>
-        <a>
+      <NextLink href={"/"}>
+        <Link css={{ display: "flex", alignItems: "center" }}>
           <Image
             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
             alt="icon app"
             width={70}
             height={70}
           />
-        </a>
-      </Link>
-      <Text h2 color="white">
-        P
-      </Text>
-      <Text h3 color="white">
-        okemon
-      </Text>
+          <Text h2 color="white">
+            P
+          </Text>
+          <Text h3 color="white">
+            okemon
+          </Text>
+        </Link>
+      </NextLink>
       <Spacer css={{ flex: 1 }}></Spacer>
-      <Text color="white">Favoritos</Text>
+      <NextLink href={"/favorites"}>
+        <Link css={{ display: "flex", alignItems: "center" }}>
+          <Text color="white">Favoritos</Text>
+        </Link>
+      </NextLink>
     </div>
   );
 };
