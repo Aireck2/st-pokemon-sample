@@ -7,7 +7,7 @@ interface Props {
   pokemonId: number;
 }
 
-export const FavoritePokemonCard: FC<Props> = ({ pokemonId }) => {
+const FavoritePokemonCard: FC<Props> = ({ pokemonId }) => {
   const router = useRouter();
 
   const onFavoriteClicked = () => {
@@ -33,3 +33,5 @@ export const FavoritePokemonCard: FC<Props> = ({ pokemonId }) => {
     </Grid>
   );
 };
+
+export default FavoritePokemonCard;

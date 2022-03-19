@@ -1,15 +1,15 @@
 import type { GetStaticProps } from "next";
+import { useEffect, useState } from "react";
 
 import { pokeApi } from "../api";
 
 import { NextPage, Pokemon, PokemonListResponse } from "../@interfaces";
 
 import { Layout } from "../components/layouts";
+import { FavoritePokemonList } from "../components/pokemon";
 import { NoFavorites } from "../components/ui";
-import { useEffect, useState } from "react";
+
 import localFavorites from "../utils/localFavorites";
-import { Grid } from "@nextui-org/react";
-import { FavoritePokemonList } from "../components/pokemon/FavoritePokemonList";
 
 interface Props {
   pokemons: Pokemon[];
