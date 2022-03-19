@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Grid } from "@nextui-org/react";
 
-import { Pokemon } from "../../interfaces";
+import { Pokemon } from "../../@interfaces";
 
 import PokemonCard from "./PokemonCard";
 
