@@ -17,7 +17,11 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
     <Grid xs={6} sm={3} md={2} xl={1}>
       <Card hoverable clickable onClick={() => handleClick(pokemon)}>
         <Card.Body css={{ p: 1 }}>
-          <Card.Image src={pokemon.img} width="100%" height={140} />
+          <Card.Image
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+            width={"100%"}
+            height={140}
+          />
         </Card.Body>
         <Card.Footer>
           <Row justify="space-between">
