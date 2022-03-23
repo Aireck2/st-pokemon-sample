@@ -120,15 +120,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: pokemon151,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { name } = params as { name: string };
 
+  const pokemon = await getFormatPokemon(name);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
-    props: { pokemon: await getFormatPokemon(name) },
+    props: { pokemon },
+    revalidate: 86400, //60 * 60 * 24
   };
 };
 
