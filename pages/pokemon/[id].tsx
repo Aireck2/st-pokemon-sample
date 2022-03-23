@@ -1,14 +1,18 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
-import { Layout } from "../../components/layouts";
-import { NextPage, PokemonFull } from "../../@interfaces";
-import { pokeApi } from "../../api";
-import localFavorites from "../../utils/localFavorites";
 import { useState } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
+
+import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
 import confetti from "canvas-confetti";
 
+import { DetailPokemon, NextPage, PokemonFull } from "../../@interfaces";
+
+import { Layout } from "../../components/layouts";
+
+import { getFormatPokemon } from "../../helpers/format.helper";
+import localFavorites from "../../utils/localFavorites";
+
 interface Props {
-  pokemon: PokemonFull;
+  pokemon: DetailPokemon;
 }
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
@@ -40,10 +44,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
           <Card hoverable css={{ padding: 30 }}>
             <Card.Body>
               <Card.Image
-                src={
-                  pokemon.sprites.other?.dream_world.front_default ||
-                  "no-image.png"
-                }
+                src={pokemon?.mainImage}
                 alt={pokemon.name}
                 width="100%"
                 height={200}
@@ -71,25 +72,25 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
               <Text size={30}>Sprites:</Text>
               <Container direction="row" display="flex" gap={0}>
                 <Image
-                  src={pokemon.sprites.front_default}
+                  src={pokemon.frontImage}
                   alt={pokemon.name}
                   width={100}
                   height={100}
                 />
                 <Image
-                  src={pokemon.sprites.back_default}
+                  src={pokemon.backImage}
                   alt={pokemon.name}
                   width={100}
                   height={100}
                 />
                 <Image
-                  src={pokemon.sprites.front_shiny}
+                  src={pokemon.frontShinyImage}
                   alt={pokemon.name}
                   width={100}
                   height={100}
                 />
                 <Image
-                  src={pokemon.sprites.back_shiny}
+                  src={pokemon.backShinyImage}
                   alt={pokemon.name}
                   width={100}
                   height={100}
@@ -113,17 +114,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: pokemon151.map((id) => ({ params: { id } })),
-    fallback: false,
+    fallback: "blocking",
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params as { id: string };
 
-  const { data } = await pokeApi.get<PokemonFull>(`pokemon/${id}`);
+  const pokemon = await getFormatPokemon(id);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
-    props: { pokemon: data },
+    props: { pokemon },
+    revalidate: 86400, //60 * 60 * 24
   };
 };
 
