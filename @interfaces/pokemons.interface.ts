@@ -11,3 +11,12 @@ export interface Pokemon {
   name: string;
   url: string;
 }
+export interface DetailPokemon {
+  id: number;
+  name: string;
+  mainImage: string;
+  frontImage: string;
+  backImage: string;
+  frontShinyImage: string;
+  backShinyImage: string;
+}
