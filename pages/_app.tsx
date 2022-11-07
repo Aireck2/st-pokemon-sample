@@ -4,9 +4,9 @@ import { ReactElement, ReactNode } from "react";
 import type { AppProps } from "next/app";
 import { NextUIProvider } from "@nextui-org/react";
 
-import { darkTheme } from "../themes";
+import { darkTheme } from "@/themes";
 
-import "../styles/globals.css";
+import "@/styles/globals.css";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

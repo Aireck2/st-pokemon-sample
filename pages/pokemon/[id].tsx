@@ -4,11 +4,11 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Button, Card, Container, Grid, Text, Image } from "@nextui-org/react";
 import confetti from "canvas-confetti";
 
-import { DetailPokemon, NextPage, PokemonFull } from "../../@interfaces";
+import { DetailPokemon, NextPage, PokemonFull } from "../../models";
 
 import { Layout } from "../../components/layouts";
 
-import { getFormatPokemon } from "../../helpers/format.helper";
+import { getFormatPokemon } from "../../helpers/format";
 import localFavorites from "../../utils/localFavorites";
 
 interface Props {
