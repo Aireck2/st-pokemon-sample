@@ -1,5 +1,5 @@
-import { PokemonFull, DetailPokemon } from "../@interfaces";
-import { pokeApi } from "../api";
+import { PokemonFull, DetailPokemon } from "@/models";
+import { pokeApi } from "@/api";
 
 export const getFormatPokemon = async (
   nameOrId: string
