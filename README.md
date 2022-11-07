@@ -30,6 +30,7 @@ st-pokemon-sample
 ├── components
 │   ├── layouts
 │   │   ├── index.ts
+│   │   ├── Header.tsx
 │   │   └── Layout.tsx
 │   ├── pokemon
 │   │   ├── FavoritePokemonCard.tsx
@@ -39,7 +40,6 @@ st-pokemon-sample
 │   │   └── PokemonList.tsx
 │   └── ui
 │       ├── index.ts
-│       ├── Navbar.tsx
 │       └── NoFavorites.tsx
 ├── helpers
 │   └── format.helper.ts
