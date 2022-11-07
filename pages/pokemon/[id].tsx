@@ -41,14 +41,14 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
     <div>
       <Grid.Container css={{ marginTop: 5 }} gap={2}>
         <Grid sm={6}>
-          <Card hoverable css={{ padding: 30 }}>
+          <Card isHoverable css={{ padding: 30 }}>
             <Card.Body>
               <Card.Image
                 src={pokemon?.mainImage}
                 alt={pokemon.name}
                 width="100%"
                 height={200}
-              ></Card.Image>
+              />
             </Card.Body>
           </Card>
         </Grid>
@@ -134,7 +134,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { pokemon },
-    revalidate: 86400, //60 * 60 * 24
+    revalidate: 86400, //60 * 60 * 24 = 24h
   };
 };
 

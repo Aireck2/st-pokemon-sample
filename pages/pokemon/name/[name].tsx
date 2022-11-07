@@ -3,11 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Button, Card, Container, Grid, Image, Text } from "@nextui-org/react";
 import confetti from "canvas-confetti";
 
-import {
-  DetailPokemon,
-  NextPage,
-  PokemonListResponse,
-} from "../../../models";
+import { DetailPokemon, NextPage, PokemonListResponse } from "../../../models";
 import { pokeApi } from "../../../api";
 
 import { Layout } from "../../../components/layouts";
@@ -45,7 +41,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
     <>
       <Grid.Container css={{ marginTop: 5 }} gap={2}>
         <Grid sm={6}>
-          <Card hoverable css={{ padding: 30 }}>
+          <Card isHoverable css={{ padding: 30 }}>
             <Card.Body>
               <Card.Image
                 src={pokemon.mainImage}
