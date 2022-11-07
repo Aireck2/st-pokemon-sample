@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { pokeApi } from "../api";
 
-import { NextPage, Pokemon, PokemonListResponse } from "../@interfaces";
+import { NextPage, Pokemon, PokemonListResponse } from "../models";
 
 import { Layout } from "../components/layouts";
 import { FavoritePokemonList } from "../components/pokemon";
@@ -34,7 +34,7 @@ const FavoritesPage: NextPage<Props> = ({ pokemons }) => {
 };
 
 FavoritesPage.getLayout = (page) => {
-  return <Layout title="Pokemons - Favoritos">{page}</Layout>;
+  return <Layout title="Favoritos">{page}</Layout>;
 };
 
 export const getStaticProps: GetStaticProps = async () => {

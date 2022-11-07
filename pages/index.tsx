@@ -2,7 +2,7 @@ import type { GetStaticProps } from "next";
 
 import { pokeApi } from "../api";
 
-import { NextPage, Pokemon, PokemonListResponse } from "../@interfaces";
+import { NextPage, Pokemon, PokemonListResponse } from "../models";
 
 import { Layout } from "../components/layouts";
 import { PokemonList } from "../components/pokemon";
@@ -25,7 +25,6 @@ HomePage.getLayout = (page) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await pokeApi.get<PokemonListResponse>("pokemon/?limit=151");
-
   const pokemons: Pokemon[] = data.results.map((pokemon, index) => {
     return {
       ...pokemon,

@@ -7,12 +7,12 @@ import {
   DetailPokemon,
   NextPage,
   PokemonListResponse,
-} from "../../../@interfaces";
+} from "../../../models";
 import { pokeApi } from "../../../api";
 
 import { Layout } from "../../../components/layouts";
 
-import { getFormatPokemon } from "../../../helpers/format.helper";
+import { getFormatPokemon } from "../../../helpers/format";
 import localFavorites from "../../../utils/localFavorites";
 
 interface Props {
