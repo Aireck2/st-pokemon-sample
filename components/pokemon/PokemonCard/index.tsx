@@ -18,7 +18,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
 
   return (
     <Grid xs={6} sm={4} md={3}>
-      <Card hoverable clickable onClick={() => handleClick(pokemon)}>
+      <Card isHoverable isPressable onClick={() => handleClick(pokemon)}>
         <Card.Body css={{ p: 1 }}>
           <Card.Image
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
@@ -33,7 +33,7 @@ const PokemonCard: FC<Props> = ({ pokemon }) => {
                 Number(pokemon.id)
               )}`}</Text>
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12} md={6} justify="center">
               <Text
                 transform="capitalize"
                 color="#ddd"

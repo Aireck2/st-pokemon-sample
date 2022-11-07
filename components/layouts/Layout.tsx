@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import Head from "next/head";
-import { Header } from "../ui";
+
+import Header from "./Header";
 
 import { capitalize } from "@/helpers/functions";
 
